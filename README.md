@@ -101,30 +101,6 @@ Frontend runs on: http://localhost:5173
 ### Application Home Page  
 ![Home Page](screenshots/HomePage.jpeg)
 
-### Add Sweet Modal  
-![Add Sweet](screenshots/AddSweet.jpeg)
-
-### Sort Sweet By Quantity in Ascending Order  
-![Sort Sweet](screenshots/SortByQuantityAscending.jpeg)
-
-### Search Sweet By Name  
-![Search Sweet](screenshots/SearchByName.jpeg)
-
-### Search Sweet By Category  
-![Search Sweet](screenshots/SearchByCategory.jpeg)
-
-### Sort Sweet By Price Range(Min,Max)  
-![Sort Sweet](screenshots/SearchByPriceRange.jpeg)
-
-### Delete Sweet Gajar Halwa
-![Delete Sweet](screenshots/DeleteSweet.jpeg)
-
-### Purchase Sweet Rabdi - Quantity(10)
-![Purchase Sweet](screenshots/PurchaseSweetRabdi.jpeg)
-
-### Restock Sweet Kaju Katli - Quantity(10)
-![Restock Sweet](screenshots/RestockKajuKatli.jpeg)
-
 - Rest of the Screenshots are attached in screenshots folder
 ## Author
 
