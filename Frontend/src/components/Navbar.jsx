@@ -14,7 +14,7 @@ const Navbar = ({ onSearch, onSort, onAddSweet }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-4 py-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black px-4 py-3">
       <div className="d-flex align-items-center">
         <span className="navbar-brand fw-bold fs-4 me-2">Sweet Shop</span>
         {role === "ROLE_ADMIN" && (

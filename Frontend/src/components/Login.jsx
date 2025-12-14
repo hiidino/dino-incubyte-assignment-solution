@@ -24,8 +24,20 @@ const Login = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: 420 }}>
-      <h3>Login</h3>
+    <div
+      className="container mt-5"
+      style={{
+        padding: "3rem",
+        maxWidth: "31rem",
+        border: "2px solid black",
+        borderRadius: "1rem",
+        height: "22rem",
+      }}
+    >
+      <center>
+        <h3>LOGIN</h3>
+      </center>
+      <br />
       <form onSubmit={handleSubmit}>
         <input
           className="form-control mb-2"
@@ -34,6 +46,7 @@ const Login = () => {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
+        <br />
         <input
           type="password"
           className="form-control mb-2"
@@ -42,9 +55,14 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <div className="d-flex justify-content-between">
-          <button className="btn btn-primary">Login</button>
-        </div>
+        <br />
+        {/* <div className="w-sm-100"> */}
+        {/* <center> */}
+        <button className="btn btn-primary bg-black" style={{ width: "25rem" }}>
+          Login
+        </button>
+        {/* </center> */}
+        {/* </div> */}
       </form>
     </div>
   );

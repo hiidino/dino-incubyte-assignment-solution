@@ -29,6 +29,9 @@ const HomePage = () => {
 
   const handleSearch = async (type, input) => {
     try {
+      if (!input || input.trim() === "") {
+        return fetchAll();
+      }
       if (type === "name") {
         const res = await searchSweetByName(input);
         setSweets(res.data);
