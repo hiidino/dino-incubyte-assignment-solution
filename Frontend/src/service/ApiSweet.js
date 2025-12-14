@@ -2,11 +2,32 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:8081/sweetshop/api/sweet";
 
+const AUTH_BASE = "http://localhost:8081/api/auth";
+
+export const setAuthToken = (token) => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    localStorage.setItem("token", token);
+  } else {
+    delete axios.defaults.headers.common["Authorization"];
+    localStorage.removeItem("token");
+  }
+};
+
+// initialize token from storage
+if (localStorage.getItem("token")) {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+}
+
 // GET all sweets
 export const getSweetList = () => axios.get(`${BASE_URL}/getAllSweets`);
 
 // POST add sweet
 export const addSweet = (sweet) => axios.post(`${BASE_URL}/add`, sweet);
+
+// Auth endpoints
+export const register = (credentials) => axios.post(`${AUTH_BASE}/register`, credentials);
+export const login = (credentials) => axios.post(`${AUTH_BASE}/login`, credentials);
 
 // DELETE sweet by id
 export const deleteSweetById = (id) => axios.delete(`${BASE_URL}/delete/${id}`);

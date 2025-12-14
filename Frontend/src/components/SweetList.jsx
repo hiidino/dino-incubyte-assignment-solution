@@ -55,6 +55,7 @@ const SweetList = ({ sweets, fetchAll }) => {
                   <button
                     className="btn btn-success btn-sm"
                     onClick={() => handlePurchase(sweet.id)}
+                    disabled={sweet.quantityInStock <= 0}
                   >
                     Purchase
                   </button>

@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ onSearch, onSort, onAddSweet }) => {
   const [searchType, setSearchType] = useState("name");
   const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
 
   const handleSearch = () => {
     if (!searchInput) return;
@@ -13,9 +17,11 @@ const Navbar = ({ onSearch, onSort, onAddSweet }) => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-4 py-3">
       <div className="d-flex align-items-center">
         <span className="navbar-brand fw-bold fs-4 me-2">Sweet Shop</span>
-        <button className="btn btn-warning btn-sm ms-2" onClick={onAddSweet}>
-          ➕ Add Sweet
-        </button>
+        {role === "ROLE_ADMIN" && (
+          <button className="btn btn-warning btn-sm ms-2" onClick={onAddSweet}>
+            ➕ Add Sweet
+          </button>
+        )}
       </div>
 
       <div className="ms-auto d-flex align-items-center flex-wrap gap-2">
@@ -42,7 +48,14 @@ const Navbar = ({ onSearch, onSort, onAddSweet }) => {
         <button className="btn btn-light btn-sm" onClick={handleSearch}>
           Search
         </button>
-
+        {!token ? (
+          <>
+            <button className="btn btn-outline-light btn-sm" onClick={() => navigate('/login')}>Login</button>
+            <button className="btn btn-outline-light btn-sm ms-1" onClick={() => navigate('/register')}>Register</button>
+          </>
+        ) : (
+          <button className="btn btn-danger btn-sm" onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('role'); window.location.reload(); }}>Logout</button>
+        )}
         <select
           className="form-select form-select-sm"
           style={{ width: "130px" }}

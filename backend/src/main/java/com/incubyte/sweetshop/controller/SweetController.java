@@ -4,6 +4,7 @@ import com.incubyte.sweetshop.model.Sweet;
 import com.incubyte.sweetshop.service.SweetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class SweetController {
 
     //add sweet endpoint
     @PostMapping("/add")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Sweet addSweet(@RequestBody Sweet sweet) {
         return sweetService.addSweet(
                 sweet.getName(),
@@ -34,6 +36,7 @@ public class SweetController {
 
     //delete sweet endpoint
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Sweet deleteSweet(@PathVariable int id) {
         return sweetService.deleteSweet(id);
     }
@@ -82,12 +85,14 @@ public class SweetController {
 
     //purchase sweet
     @PostMapping("/purchase/{id}")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN')")
     public Sweet purchaseSweet(@PathVariable long id, @RequestParam int quantity) {
         return sweetService.purchaseSweet(id, quantity);
     }
 
     //restock sweet
     @PostMapping("/restock/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Sweet restockSweet(@PathVariable long id, @RequestParam int quantity) {
         return sweetService.restockSweet(id, quantity);
     }
