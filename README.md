@@ -74,7 +74,7 @@ cd Backend
 mvn clean install
 mvn spring-boot:run
 ```
-Backend runs on: http://localhost:3000
+Backend runs on: http://localhost:8081
 
 ### Backend  
 ```bash
